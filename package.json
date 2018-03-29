@@ -1,0 +1,23 @@
+{
+  "name": "react-modal-container",
+  "version": "1.0.0",
+  "description": "react-modal-container is modal dialogs container.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Lizhooh/react-modal-container"
+  },
+  "keywords": [
+    "modal",
+    "modal-container",
+    "react-modal-container",
+    "container"
+  ],
+  "author": "lizhooh",
+  "license": "ISC",
+  "devDependencies": {},
+  "dependencies": {}
+}
