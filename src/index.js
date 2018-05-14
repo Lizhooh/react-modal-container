@@ -28,24 +28,24 @@ export default (Component, options) => class NodeRender {
         Object.keys(p).forEach(i => {
             typeof p[i] === 'function' && (p[i] = p[i].bind(this));
         });
-
+        // <div
+        //     alpha={0.42}
+        //     className="flex flex-center"
+        //     onClick={this.onClick}
+        //     style={{
+        //         position: 'fixed',
+        //         zIndex: 10001,
+        //         top: 0,
+        //         left: 0,
+        //         right: 0,
+        //         bottom: 0,
+        //         backgroundColor: `rgba(1, 1, 1, ${this.options.alpha})`,
+        //     }}
+        //     >
+        //     <Component {...p} modal={{ ...this }} />
+        // </div>
         return (
-            <div
-                alpha={0.42}
-                className="flex flex-center"
-                onClick={this.onClick}
-                style={{
-                    position: 'fixed',
-                    zIndex: 10001,
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    backgroundColor: `rgba(1, 1, 1, ${this.options.alpha})`,
-                }}
-                >
-                <Component {...p} modal={{ ...this }} />
-            </div>
+            <Component {...p} modal={{ ...this }} />
         )
     }
 
