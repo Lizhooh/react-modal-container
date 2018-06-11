@@ -8,7 +8,7 @@ export default (Component, options) => class NodeRender {
 
     constructor(props) {
         this.props = props;
-        this.id = Math.random();
+        this.id = Math.random().toString().slice(2);
         this.options = {
             clickModalClose: false,
             alpha: 0.45,
@@ -28,22 +28,6 @@ export default (Component, options) => class NodeRender {
         Object.keys(p).forEach(i => {
             typeof p[i] === 'function' && (p[i] = p[i].bind(this));
         });
-        // <div
-        //     alpha={0.42}
-        //     className="flex flex-center"
-        //     onClick={this.onClick}
-        //     style={{
-        //         position: 'fixed',
-        //         zIndex: 10001,
-        //         top: 0,
-        //         left: 0,
-        //         right: 0,
-        //         bottom: 0,
-        //         backgroundColor: `rgba(1, 1, 1, ${this.options.alpha})`,
-        //     }}
-        //     >
-        //     <Component {...p} modal={{ ...this }} />
-        // </div>
         return (
             <Component {...p} modal={{ ...this }} />
         )
@@ -54,6 +38,7 @@ export default (Component, options) => class NodeRender {
         this.component = component || React.createElement('div');
         this.el = document.createElement('div');
         this.el.id = this.id;
+
         document.body.appendChild(this.el);
         // 渲染到指定节点上
         ReactDOM.render(this.component, this.el);
@@ -68,12 +53,12 @@ export default (Component, options) => class NodeRender {
     }
 
     // 打开弹框
-    open = (data) => {
+    open = (props) => {
         const el = document.getElementById(this.id);
         if (el) return;
         document.body.style = 'overflow: hidden';
-        data !== undefined ?
-            this.renderNode(this.renderModal({ data })) :
+        props !== undefined ?
+            this.renderNode(this.renderModal(props)) :
             this.renderNode(this.renderModal());
     }
 
