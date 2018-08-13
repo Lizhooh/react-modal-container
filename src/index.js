@@ -4,22 +4,11 @@ import ReactDOM from 'react-dom';
 /**
  * 高阶静态组件
  */
-export default (Component, options) => class NodeRender {
+export default (Component, id) => class NodeRender {
 
     constructor(props) {
         this.props = props;
-        this.id = Math.random().toString().slice(2);
-        this.options = {
-            clickModalClose: false,
-            alpha: 0.45,
-            ...options,
-        }
-    }
-
-    onClick = e => {
-        if (e.target === e.currentTarget && this.options.clickModalClose) {
-            this.close();
-        }
+        this.id = Math.random().toString(32).slice(2) || id;
     }
 
     // 渲染模型
@@ -56,7 +45,9 @@ export default (Component, options) => class NodeRender {
     open = (props) => {
         const el = document.getElementById(this.id);
         if (el) return;
-        document.body.style = 'overflow: hidden';
+        if (document.body.style.overflow !== 'hidden') {
+            document.body.style = 'overflow: hidden';
+        }
         props !== undefined ?
             this.renderNode(this.renderModal(props)) :
             this.renderNode(this.renderModal());
@@ -64,8 +55,9 @@ export default (Component, options) => class NodeRender {
 
     // 关闭弹框
     close = () => {
-        document.body.style = '';
+        if (document.body.style.overflow === 'hidden') {
+            document.body.style = '';
+        }
         this.unmount();
     }
 }
-
