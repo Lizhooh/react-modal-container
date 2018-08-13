@@ -1,0 +1,25 @@
+html, body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+button {
+    font-family: inherit;
+    border: none;
+    border-radius: 2px;
+    color: #fff;
+    background-color: #3af;
+    padding: 0.4em 1.2em;
+    outline: none;
+    cursor: pointer;
+    box-shadow: 1px 2px 3px rgba(30, 145, 255, 0.3);
+}
+
+button:hover {
+    background-color: #39f;
+}
