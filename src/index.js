@@ -18,19 +18,24 @@ export default (Component, id) => class NodeRender {
             typeof p[i] === 'function' && (p[i] = p[i].bind(this));
         });
         return (
-            <Component {...p} modal={{ ...this }} />
+            <Component {...p} modal={{ ...this }} ref={r => this.__c = r} />
         )
     }
 
     // 渲染在 body 节点下
     renderNode(component) {
         this.component = component || React.createElement('div');
-        this.el = document.createElement('div');
-        this.el.id = this.id;
-
-        document.body.appendChild(this.el);
-        // 渲染到指定节点上
-        ReactDOM.render(this.component, this.el);
+        // 判断节点是否存在
+        if (document.getElementById(this.id)) {
+            ReactDOM.render(this.component, this.el);
+        }
+        else {
+            this.el = document.createElement('div');
+            this.el.id = this.id;
+            document.body.appendChild(this.el);
+            // 渲染到指定节点上
+            ReactDOM.render(this.component, this.el);
+        }
     }
 
     // 卸载节点
@@ -54,10 +59,18 @@ export default (Component, id) => class NodeRender {
     }
 
     // 关闭弹框
-    close = () => {
-        if (document.body.style.overflow === 'hidden') {
+    close = (hidden = true) => {
+        if (hidden && document.body.style.overflow === 'hidden') {
             document.body.style = '';
         }
         this.unmount();
+    }
+
+    // 更新
+    update = (props) => {
+        this.props = props;
+        if (this.__c) {
+            this.renderNode(this.renderModal(props));
+        }
     }
 }

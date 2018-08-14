@@ -13,7 +13,12 @@ export default class App extends Component {
     render() {
         return (
             <Panel>
-                <button onClick={this.popup.open}>打开一个 Modal</button>
+                <button onClick={e => {
+                    this.popup.open();
+                    setTimeout(() => {
+                        this.popup.update({ name: 'cba' });
+                    }, 2000);
+                }}>打开一个 Modal</button>
             </Panel>
         );
     }

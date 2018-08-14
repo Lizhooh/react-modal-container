@@ -7,6 +7,7 @@ export default Modal(class extends Component {
     render() {
         const { modal, name } = this.props;
         // modal 是自动注入的 props
+        console.log(this.props);
 
         return (
             <Layer>
@@ -51,3 +52,4 @@ const Button = styled.button`
     font-size: 15px;
     padding: 0.4em 1.2em;
 `;
+

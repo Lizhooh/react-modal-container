@@ -112,8 +112,9 @@ const Panel = styled.div`
 ModalContainer(component, id);
 
 实例化之后，可以用函数。
-- open(props) - 打开弹层，可以传递 props。
-- close() - 关闭弹层。
+- open(props?) - 打开弹层，可以传递 props。
+- close(hide?) - 关闭弹层。
+- update(props) - 更新弹层的 props。
 
 > 注意，close 之后会从 document.body 里删除，而不是设置为 display: none。
 
