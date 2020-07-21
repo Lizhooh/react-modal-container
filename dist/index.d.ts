@@ -1,14 +1,11 @@
 import { ComponentType } from 'react';
 declare type ID = string | number;
-interface IBaseProps<P> {
+export interface IBaseProps<P> {
     modal: {
         open: (props?: P) => any;
         close: () => any;
     };
 }
-/**
- * 高阶 Modal 组件包裹
- */
 export default function <Props = any>(Component: ComponentType<Props & IBaseProps<Props>>, id?: ID): {
     new (props?: Props): {
         component: any;

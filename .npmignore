@@ -2,3 +2,5 @@ gulpfile.js
 scripts/
 src/
 _image/
+dist/
+example/

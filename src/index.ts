@@ -1,9 +1,13 @@
+/**
+ * @Author: Lizhooh (lizhoohs@foxmail.com)
+ * @Date: 2020-07-21 08:54:08
+ */
 import { createElement, ComponentType } from 'react';
 import ReactDOM from 'react-dom';
 
 type ID = string | number;
 
-interface IBaseProps<P> {
+export interface IBaseProps<P> {
   modal: {
     open: (props?: P) => any,
     close: () => any,

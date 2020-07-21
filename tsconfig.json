@@ -2,11 +2,12 @@
     "compilerOptions": {
         "target": "es5",
         "module": "commonjs",
-        "removeComments": false,
+        "removeComments": true,
         "lib": ["es6", "dom"],
         "isolatedModules": false,
         "declaration": true,
         "outDir": "./dist",
+        "emitDecoratorMetadata": true,
         "preserveConstEnums": true,
         "moduleResolution": "node",
         "experimentalDecorators": true,
