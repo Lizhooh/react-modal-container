@@ -1,6 +1,6 @@
 {
   "name": "react-modal-container",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "react-modal-container is modal dialogs container.",
   "main": "index.js",
   "scripts": {
